@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FilterBar from '../../components/FilterBar.astro';
+import WorkRun from '../../components/WorkRun.astro';
+import { publicWork } from '../../data/work';
+---
+
+<BaseLayout
+  title="Work · Vania Sandra Clarissa"
+  description="A curated archive of research, presentations, writing, data and visual communication by Vania Sandra Clarissa."
+>
+  <header class="page-head">
+    <div class="shell">
+      <h1>Work</h1>
+      <p class="lead">
+        Research, presentations, writing and visual work, including the environmental and community
+        questions I am working toward.
+      </p>
+      <p class="meta page-meta">
+        {publicWork.length} works · academic, independent, professional and collaborative
+      </p>
+      <p class="work-intro">
+        The archive is a record of what I have actually made: academic research, independent essays, a
+        data dashboard, professional project artifacts and collaborative features. Some items are
+        environmental; others show the research, writing and communication practice I bring to that
+        work.
+      </p>
+    </div>
+  </header>
+
+  <section class="work-archive" aria-label="Work archive">
+    <div class="shell work-index-grid">
+      <FilterBar />
+      <div class="work-list">
+        {publicWork.map((item) => (
+          <WorkRun item={item} reveal />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

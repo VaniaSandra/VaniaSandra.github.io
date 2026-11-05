@@ -1,0 +1,22 @@
+---
+import { countForFilter, publicWork, workFilters } from '../data/work';
+---
+
+<div class="filter-rail">
+  <p class="filter-label" id="filter-label">Filter by</p>
+  <div class="filter-list" role="group" aria-labelledby="filter-label">
+    {workFilters.map((filter) => (
+      <button
+        type="button"
+        class="filter-btn"
+        data-filter={filter.id}
+        aria-pressed={filter.id === 'all' ? 'true' : 'false'}
+      >
+        {filter.label} ({countForFilter(filter.id)})
+      </button>
+    ))}
+  </div>
+  <p class="filter-status" data-filter-status aria-live="polite">
+    Showing {publicWork.length} of {publicWork.length} works.
+  </p>
+</div>

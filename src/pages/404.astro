@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkFrame from '../components/WorkFrame.astro';
+import { workBySlug } from '../data/work';
+
+const getItem = (slug: string) => {
+  const item = workBySlug.get(slug);
+  if (!item) throw new Error(`Missing work item: ${slug}`);
+  return item;
+};
+
+const scada = getItem('scada-agtech-climate-adaptation');
+const soil = getItem('soil-organic-carbon');
+const tableau = getItem('food-production-emissions');
+const fcc = getItem('fcc-blue-economy');
+
+const strip = [
+  { item: scada, image: scada.images[1], caption: 'SCADA 2026' },
+  { item: soil, image: soil.images[0], caption: 'Soil carbon essay' },
+  { item: tableau, image: tableau.images[0], caption: 'Food emissions dashboard' },
+  { item: fcc, image: fcc.images[0], caption: 'FCC webinar poster' },
+];
+---
+
+<BaseLayout
+  title="Page not found · Vania Sandra Clarissa"
+  description="The page you were looking for could not be found."
+  noindex
+>
+  <header class="page-head not-found-head">
+    <div class="shell not-found-grid">
+      <h1 class="not-found-title" data-reveal><span>Page not</span><span>found</span></h1>
+      <div class="not-found-copy">
+        <p class="lead" data-reveal>
+          The page you were looking for is not here. It may have moved, or the link may be out of
+          date.
+        </p>
+        <p class="not-found-body" data-reveal>
+          If you followed a link from elsewhere, it may be out of date. The work archive is the best
+          place to start.
+        </p>
+        <p data-reveal>
+          <a class="text-action" href="/">
+            Return home <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </p>
+        <p data-reveal>
+          <a class="text-action" href="/work/">
+            Browse the work <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--ivory" aria-labelledby="not-found-work-title">
+    <div class="shell">
+      <div class="gallery-head" data-reveal>
+        <h2 id="not-found-work-title">Some work instead</h2>
+        <p class="meta">Four frames from the archive.</p>
+      </div>
+
+      <div class="contact-strip">
+        {strip.map((entry) => (
+          <a
+            class="strip-link"
+            href={`/work/${entry.item.slug}/`}
+            aria-label={`View ${entry.item.title}`}
+            data-reveal
+          >
+            <WorkFrame image={entry.image} caption={entry.caption} tone="sage" frameHeight={170} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

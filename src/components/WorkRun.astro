@@ -1,0 +1,32 @@
+---
+import type { WorkItem } from '../data/work';
+
+interface Props {
+  item: WorkItem;
+  reveal?: boolean;
+}
+
+const { item, reveal = false } = Astro.props;
+---
+
+<article class="work-run" data-tags={item.tags.join(' ')} data-reveal={reveal ? '' : undefined}>
+  <div class="run-frames">
+    {item.runImages.map((image) => (
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="lazy"
+        decoding="async"
+      />
+    ))}
+  </div>
+  <div class="run-meta">
+    <p class="run-title">
+      <a href={`/work/${item.slug}/`}>{item.runTitle}</a>
+    </p>
+    <p class="run-desc">{item.runDescriptor}</p>
+    <p class="run-year">{item.yearLabel}</p>
+  </div>
+</article>

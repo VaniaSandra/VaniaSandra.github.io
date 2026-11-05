@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkFrame from '../components/WorkFrame.astro';
+import WorkRun from '../components/WorkRun.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { featuredWork, publicWork, workBySlug } from '../data/work';
+
+const getItem = (slug: string) => {
+  const item = workBySlug.get(slug);
+  if (!item) throw new Error(`Missing work item: ${slug}`);
+  return item;
+};
+
+const scada = getItem('scada-agtech-climate-adaptation');
+const soil = getItem('soil-organic-carbon');
+const tableau = getItem('food-production-emissions');
+const fcc = getItem('fcc-blue-economy');
+const bsc = getItem('bsc-thermoluminescence-dosimetry');
+const coffee = getItem('coffee-chemistry');
+const agtech = getItem('bridging-precision-and-place');
+const girlup = getItem('girl-up-sister-brotherhood');
+const besindo = getItem('radiotherapy-projects-indonesia');
+const archive = publicWork.filter((item) => !item.featured);
+---
+
+<BaseLayout
+  title="Vania Sandra Clarissa · Physics-trained project support"
+  description="Physics graduate with close to three years of project and application support experience in medical physics, moving into environmental and community project work."
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="shell hero-grid">
+      <div class="hero-panel">
+        <h1 id="hero-title"><span>Vania Sandra</span><span>Clarissa</span></h1>
+        <p class="hero-descriptor">
+          Physics-trained project support, moving into environmental and community work.
+        </p>
+        <p class="hero-support">
+          I bring research discipline, clear documentation and calm coordination to projects that
+          connect science, land and people.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--light" href="/work/">Explore the work</a>
+          <a class="text-action text-action--light" href="/contact/">
+            Get in touch <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="hero-facts">
+          <span>Based in Indonesia</span>
+          <span>BSc Physics, Universitas Indonesia</span>
+          <span>Project Officer and Application Support, 2023–2026</span>
+        </div>
+      </div>
+
+      <div class="hero-sheet" aria-label="Selected frames from the work">
+        <div class="sheet-col">
+          <a
+            class="sheet-link"
+            href={`/work/${scada.slug}/`}
+            aria-label={`View ${scada.title}`}
+          >
+            <WorkFrame
+              image={scada.images[1]}
+              caption="SCADA 2026"
+              tone="sage"
+              frameHeight={150}
+              eager
+            />
+          </a>
+          <a class="sheet-link" href={`/work/${soil.slug}/`} aria-label={`View ${soil.title}`}>
+            <WorkFrame image={soil.images[0]} caption="Soil carbon" tone="clay" frameHeight={128} />
+          </a>
+          <a
+            class="sheet-link"
+            href={`/work/${coffee.slug}/`}
+            aria-label={`View ${coffee.title}`}
+          >
+            <WorkFrame
+              image={coffee.images[0]}
+              caption="Coffee chemistry"
+              tone="ochre"
+              frameHeight={162}
+            />
+          </a>
+        </div>
+
+        <div class="sheet-col">
+          <a
+            class="sheet-link"
+            href={`/work/${tableau.slug}/`}
+            aria-label={`View ${tableau.title}`}
+          >
+            <WorkFrame image={tableau.images[0]} caption="Food data" tone="ivory" frameHeight={122} />
+          </a>
+          <a class="sheet-link" href={`/work/${bsc.slug}/`} aria-label={`View ${bsc.title}`}>
+            <WorkFrame image={bsc.images[2]} caption="BSc research" tone="sage" frameHeight={150} />
+          </a>
+          <a
+            class="sheet-link"
+            href={`/work/${agtech.slug}/`}
+            aria-label={`View ${agtech.title}`}
+          >
+            <WorkFrame
+              image={agtech.images[0]}
+              caption="Agtech essay"
+              tone="clay"
+              frameHeight={160}
+            />
+          </a>
+        </div>
+
+        <div class="sheet-col">
+          <a class="sheet-link" href={`/work/${fcc.slug}/`} aria-label={`View ${fcc.title}`}>
+            <WorkFrame image={fcc.images[0]} caption="Blue economy" tone="ochre" frameHeight={172} />
+          </a>
+          <a class="sheet-link" href={`/work/${scada.slug}/`} aria-label={`View ${scada.title}`}>
+            <WorkFrame image={scada.images[3]} caption="Pathway" tone="sage" frameHeight={138} />
+          </a>
+          <a
+            class="sheet-link"
+            href={`/work/${girlup.slug}/`}
+            aria-label={`View ${girlup.title}`}
+          >
+            <WorkFrame image={girlup.images[0]} caption="GIRL UP" tone="clay" frameHeight={130} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Profile">
+    <div class="shell statement-grid">
+      <div class="statement-facts" data-reveal>
+        <span>Based in Indonesia</span>
+        <span>BSc Physics, 2018–2022</span>
+        <span>Project support, 2023–2026</span>
+      </div>
+      <div class="statement-copy" data-reveal>
+        <p>
+          I trained in physics, spent close to three years supporting radiotherapy equipment
+          projects, and am now directing that experience toward environmental and community work. I
+          care about evidence, clear communication and projects that are deliverable on the ground.
+        </p>
+        <a class="text-action" href="/about/">
+          More about the path <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ivory" aria-labelledby="selected-title">
+    <div class="shell selected-grid">
+      <div class="selected-rail" data-reveal>
+        <h2 id="selected-title">Selected work</h2>
+        <p class="meta">Five pieces from a wider archive of research, writing and visual work.</p>
+        <a class="text-action" href="/work/">
+          All work <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="selected-list">
+        {featuredWork.map((item) => (
+          <WorkRun item={item} reveal />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sage" aria-labelledby="capabilities-title">
+    <div class="shell">
+      <div class="capabilities-head" data-reveal>
+        <h2 id="capabilities-title">What I bring</h2>
+        <p class="meta">Transferable practice, evidenced in the work.</p>
+      </div>
+
+      <div class="cap-grid">
+        <div class="cap" data-reveal data-reveal-delay="1">
+          <h3>Research and synthesis</h3>
+          <p>I can read technical evidence, compare sources and turn it into a clear argument.</p>
+          <a href={`/work/${soil.slug}/`}>
+            Read the soil carbon essay <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="cap" data-reveal data-reveal-delay="1">
+          <h3>Project coordination and documentation</h3>
+          <p>I keep schedules, records and stakeholders aligned across technical projects.</p>
+          <a href={`/work/${besindo.slug}/`}>
+            See the equipment projects <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="cap" data-reveal data-reveal-delay="2">
+          <h3>Technical communication</h3>
+          <p>I explain complex material to clinical, technical and non-specialist audiences.</p>
+          <a href={`/work/${bsc.slug}/`}>
+            See the research presentation <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="cap" data-reveal data-reveal-delay="2">
+          <h3>Data and visual communication</h3>
+          <p>I use data and design to make findings easier to understand.</p>
+          <a href={`/work/${tableau.slug}/`}>
+            Open the dashboard <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="archive-title">
+    <div class="shell">
+      <div class="capabilities-head" data-reveal>
+        <h2 id="archive-title">Also in the archive</h2>
+        <a class="text-action" href="/work/">
+          Browse all work <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="archive-list">
+        {archive.map((item) => (
+          <div class="archive-item" data-reveal>
+            <a href={`/work/${item.slug}/`}>{item.runTitle}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand />
+</BaseLayout>

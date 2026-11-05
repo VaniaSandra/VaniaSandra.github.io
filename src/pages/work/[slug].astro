@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkFrame from '../../components/WorkFrame.astro';
+import { publicWork, type WorkItem } from '../../data/work';
+
+export function getStaticPaths() {
+  return publicWork.map((item, index) => ({
+    params: { slug: item.slug },
+    props: {
+      item,
+      next: publicWork[(index + 1) % publicWork.length],
+      index,
+    },
+  }));
+}
+
+interface Props {
+  item: WorkItem;
+  next: WorkItem;
+  index: number;
+}
+
+const { item, next, index } = Astro.props;
+const more = [...publicWork.slice(index + 1), ...publicWork.slice(0, index)].slice(0, 4);
+const gallery = item.images.slice(1);
+const description = item.summary;
+---
+
+<BaseLayout title={`${item.title} · Vania Sandra Clarissa`} description={description} ogImage={item.cover.src}>
+  <article>
+    <header class="detail-head">
+      <div class="shell">
+        <h1 class="detail-title">
+          {item.h1Lines.map((line, lineIndex) => (
+            <span>
+              {line}
+              {lineIndex < item.h1Lines.length - 1 && ' '}
+            </span>
+          ))}
+        </h1>
+        <p class="meta detail-context">
+          {item.context} · {item.yearLabel}
+          {item.organisation && ` · ${item.organisation}`}
+        </p>
+        <p class="lead detail-summary">{item.summary}</p>
+        <a class="back-link" href="/work/">
+          <span aria-hidden="true">←</span> All work
+        </a>
+      </div>
+    </header>
+
+    <figure class="detail-hero">
+      <div class="shell">
+        <img
+          src={item.cover.src}
+          alt={item.cover.alt}
+          width={item.cover.width}
+          height={item.cover.height}
+          loading="eager"
+          decoding="async"
+        />
+        {item.cover.fullSize && (
+          <figcaption class="detail-hero-open">
+            <a
+              class="text-action"
+              href={item.cover.fullSize.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.cover.fullSize.label}
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </figcaption>
+        )}
+      </div>
+    </figure>
+
+    <div class="shell detail-grid">
+      <aside class="detail-aside" aria-label="Work details">
+        <dl class="fact-list">
+          {item.facts.map((fact) => (
+            <div class="fact">
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {item.pdf && (
+          <a
+            class="btn detail-pdf"
+            href={item.pdf.href}
+            target="_blank"
+            rel="noopener"
+            type="application/pdf"
+          >
+            {item.pdf.label} (PDF, {item.pdf.pages} pages)
+          </a>
+        )}
+
+        {item.externalUrl && (
+          <a
+            class="text-action"
+            href={item.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.externalLabel ?? 'Open external link'}
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        )}
+      </aside>
+
+      <div class="detail-content">
+        {item.sections.map((section) => (
+          <section class="detail-section" data-reveal>
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </section>
+        ))}
+
+        {item.contentNote && (
+          <aside class="content-note" data-reveal>
+            <p>{item.contentNote}</p>
+          </aside>
+        )}
+
+        {item.note && (
+          <p class="detail-note" data-reveal>
+            {item.note}
+          </p>
+        )}
+
+        {item.credits && (
+          <p class="detail-credit" data-reveal>
+            {item.credits}
+          </p>
+        )}
+      </div>
+    </div>
+
+    {gallery.length > 0 && (
+      <section class="detail-gallery" aria-labelledby="gallery-title">
+        <div class="shell">
+          <div class="gallery-head" data-reveal>
+            <h2 id="gallery-title">Selected images</h2>
+            <p class="meta">{gallery.length + 1} frames from the work</p>
+          </div>
+          <div class="gallery-grid">
+            {gallery.map((image) => (
+              <figure class={image.wide ? 'gallery-figure gallery-figure--wide' : 'gallery-figure'} data-reveal>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width={image.width}
+                  height={image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                {image.caption && <figcaption class="meta">{image.caption}</figcaption>}
+                {image.fullSize && (
+                  <p class="gallery-open">
+                    <a class="text-action" href={image.fullSize.href} target="_blank" rel="noopener noreferrer">
+                      {image.fullSize.label}
+                      <span class="arrow" aria-hidden="true">→</span>
+                    </a>
+                  </p>
+                )}
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="detail-more" aria-labelledby="more-title">
+      <div class="shell">
+        <div class="gallery-head" data-reveal>
+          <h2 id="more-title">More from the archive</h2>
+          <a class="text-action" href="/work/">
+            All work <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="more-grid">
+          {more.map((moreItem) => (
+            <a
+              class="more-item"
+              href={`/work/${moreItem.slug}/`}
+              aria-label={`View ${moreItem.title}`}
+              data-reveal
+            >
+              <WorkFrame
+                image={moreItem.cover}
+                caption={moreItem.context}
+                tone="sage"
+                frameHeight={150}
+              />
+              <span class="more-title">{moreItem.runTitle}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <nav class="next-work" aria-label="Next work">
+      <div class="shell next-inner">
+        <p class="meta">Next work</p>
+        <a class="next-link" href={`/work/${next.slug}/`}>
+          {next.runTitle} <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

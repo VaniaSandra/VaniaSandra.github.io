@@ -1,0 +1,45 @@
+# --- Dependencies & build output ---
+node_modules/
+dist/
+.astro/
+
+# --- Owner-supplied source material: PRIVATE, never commit ---
+# Contains the CV (full name, phone, home address, employer detail), certificates,
+# hospital project photographs, SCADA field photographs of identifiable people, and
+# the un-redacted posters carrying a bank account number, account holder name and
+# personal messaging handles. Inventory: CONTENT_INVENTORY.md (ignored, see below).
+raw-files/
+
+# --- Working scratch: page renders of private documents, screenshots, one-off scripts ---
+.scratch/
+
+# --- Internal content review: PRIVATE, never commit ---
+# These are the owner-facing audit notes behind the site. They enumerate every
+# source file in raw-files/, name the institutions and people in the photographs
+# that were deliberately withheld, and record which items are still pending
+# permission. Keep them on disk as working notes, out of the public repository.
+CONTENT_INVENTORY.md
+ASSET_REVIEW.md
+
+# --- Visual audit screenshots (keep direction.json, it is the art-direction source of truth) ---
+.taste-skill/inspect/
+
+# --- Environment & secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Tooling & editor noise ---
+.playwright-mcp/
+.vercel/
+.qoder/
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.swp
+.idea/
+.vscode/
+!.vscode/extensions.json

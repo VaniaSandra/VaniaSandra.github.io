@@ -1,0 +1,31 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="contact-band" aria-label="Contact">
+  <div class="shell contact-grid">
+    <p class="contact-sentence">
+      For project officer, coordinator and research support roles, get in touch.
+    </p>
+
+    <figure class="contact-figure">
+      <img
+        src="/work/soil-carbon/soil-carbon-quote.webp"
+        alt="Quote card from the soil carbon essay: higher carbon levels do not automatically indicate a healthy or well-functioning soil."
+        width="1000"
+        height="1250"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="contact-links">
+      <p class="meta">Start a conversation</p>
+      <a href={site.emailHref}>{site.email}</a>
+      <a href={site.linkedin} rel="me noopener noreferrer" target="_blank">
+        {site.linkedinLabel}
+      </a>
+      <p class="meta contact-note">Based in Indonesia. Email is the best first contact.</p>
+    </div>
+  </div>
+</section>

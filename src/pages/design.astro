@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { designItems } from '../data/design';
+---
+
+<BaseLayout
+  title="Design portfolio · Vania Sandra Clarissa"
+  description="Posters, flyers, merchandise promotion and science-communication graphics by Vania Sandra Clarissa, made for student organisations, campus events and professional project communication."
+>
+  <header class="page-head">
+    <div class="shell">
+      <h1>Design portfolio</h1>
+      <p class="lead">
+        Posters, flyers, merchandise promotion and infographics — most of it made while studying, and
+        later for project communication at work.
+      </p>
+      <p class="meta page-meta">{designItems.length} pieces · 2019 – 2021</p>
+      <p class="work-intro">
+        These are the layouts I made, not a design degree. The briefs came from student committees and
+        project teams: announce an event, explain a science idea, sell a bundle of t-shirts. Reading
+        order, contrast and a single clear headline were the constraints.
+      </p>
+      <p class="design-notice">
+        Contact details, messaging handles, phone numbers and bank account numbers have been removed
+        from the public images here. Where a poster contains third-party photography or illustration,
+        that is noted under the piece.
+      </p>
+    </div>
+  </header>
+
+  <section class="section design-section" aria-labelledby="design-list-title">
+    <div class="shell">
+      <h2 id="design-list-title" class="sr-only">Design work</h2>
+      <div class="design-grid">
+        {designItems.map((item) => (
+          <article class="design-item" data-reveal>
+            <a class="design-link" href={item.src} target="_blank" rel="noopener noreferrer">
+              <img
+                src={item.src}
+                alt={item.alt}
+                width={item.width}
+                height={item.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <div class="design-body">
+              <p class="meta">{item.kind} · {item.yearLabel}</p>
+              <h3 class="design-title">{item.title}</h3>
+              {item.organisation && <p class="meta design-org">{item.organisation}</p>}
+              <p>{item.summary}</p>
+              {(item.redacted || item.credit) && (
+                <ul class="design-flags">
+                  {item.redacted && <li>{item.redacted}</li>}
+                  {item.credit && <li>{item.credit}</li>}
+                </ul>
+              )}
+              {item.workSlug && (
+                <a class="text-action" href={`/work/${item.workSlug}/`}>
+                  Read the case <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sage" aria-labelledby="design-about-title">
+    <div class="shell timeline-grid">
+      <div class="timeline-rail" data-reveal>
+        <h2 id="design-about-title">Where this came from</h2>
+        <p class="meta">Student committees, then project communication at work.</p>
+      </div>
+      <div class="bio-body" data-reveal>
+        <p>
+          Most of this was made while studying physics at Universitas Indonesia, in student committee
+          roles that included promotional posters and event communications — the physics department
+          association, the department orientation committee and the TEDxUniversitasIndonesia team. The
+          two event posters here that carry the department's own handles are the clearest record of
+          that work.
+        </p>
+        <p>
+          The webinar poster is professional work, produced during the project management internship
+          on the Fisheries Cyber Center. The coffee infographic is independent science communication,
+          written and laid out by me, and the THERAFÉ mark is a concept I developed on my own.
+        </p>
+        <a class="text-action" href="/about/">
+          The organisations I worked with <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

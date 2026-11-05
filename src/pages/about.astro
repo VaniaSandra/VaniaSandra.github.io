@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkFrame from '../components/WorkFrame.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { workBySlug } from '../data/work';
+
+const getItem = (slug: string) => {
+  const item = workBySlug.get(slug);
+  if (!item) throw new Error(`Missing work item: ${slug}`);
+  return item;
+};
+
+const scada = getItem('scada-agtech-climate-adaptation');
+const soil = getItem('soil-organic-carbon');
+const tableau = getItem('food-production-emissions');
+const fcc = getItem('fcc-blue-economy');
+const bsc = getItem('bsc-thermoluminescence-dosimetry');
+
+const strip = [
+  { item: scada, image: scada.images[2], caption: 'SCADA 2026 · precision agriculture' },
+  { item: soil, image: soil.images[1], caption: 'Soil carbon essay · key argument' },
+  { item: tableau, image: tableau.images[1], caption: 'Food emissions · category view' },
+  { item: bsc, image: bsc.images[2], caption: 'BSc research · response data' },
+  { item: fcc, image: fcc.images[1], caption: 'FCC webinar · event communication' },
+];
+---
+
+<BaseLayout
+  title="About · Vania Sandra Clarissa"
+  description="Vania Sandra Clarissa is a physics graduate with close to three years of project and application support experience in medical physics, moving into environmental and community project work."
+>
+  <header class="page-head about-head">
+    <div class="shell about-hero">
+      <h1 class="about-title"><span>From physics</span><span>to the field</span></h1>
+      <div class="about-intro">
+        <p class="lead">
+          Physics-trained project support, moving into environmental and community work.
+        </p>
+        <p>
+          I bring research discipline, precise documentation and calm coordination to projects that
+          connect science, land and people.
+        </p>
+      </div>
+    </div>
+
+    <div class="shell about-ledger">
+      <div class="ledger-cell">
+        <p class="meta">Based in</p>
+        <p class="ledger-value">Indonesia</p>
+      </div>
+      <div class="ledger-cell">
+        <p class="meta">Training</p>
+        <p class="ledger-value">BSc Physics, Universitas Indonesia</p>
+      </div>
+      <div class="ledger-cell">
+        <p class="meta">Current focus</p>
+        <p class="ledger-value">Sustainable agriculture, soil health and climate adaptation</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--ivory" aria-labelledby="path-title">
+    <div class="shell bio-grid">
+      <div class="bio-aside" data-reveal>
+        <h2 id="path-title">The path here</h2>
+        <p class="meta">
+          A scientific training, a technical delivery role, and a deliberate move toward land and
+          community work.
+        </p>
+        <figure class="bio-portrait">
+          <img
+            src="/about/portrait.webp"
+            alt="Portrait of Vania Sandra Clarissa, seated and smiling."
+            width="400"
+            height="400"
+            loading="eager"
+            decoding="async"
+          />
+          <figcaption>Vania Sandra Clarissa</figcaption>
+        </figure>
+      </div>
+
+      <div class="bio-body" data-reveal>
+        <p class="bio-lede">
+          <span class="drop-cap" aria-hidden="true">I</span> trained in physics at Universitas
+          Indonesia, with a specialisation in medical physics. For close to three years I worked as a
+          Project Officer and Application Support at PT Besindo Medi Prima, supporting radiotherapy
+          equipment and application projects across Indonesia. That meant coordinating schedules,
+          keeping documentation precise, supporting hospital training and explaining technical
+          systems to clinical and non-technical teams.
+        </p>
+        <p>
+          Physics taught me to test an assumption before trusting it. Project work taught me that a
+          good plan is only useful if the people who have to carry it can use it. I am now moving
+          into environmental and community project work, with applied study in sustainable
+          agriculture, soil health and climate adaptation.
+        </p>
+        <p>
+          Through the SCADA 2026 Summer Course at IPB University, I studied digital agriculture,
+          remote sensing, greenhouse-gas emissions, food security and resource management, including
+          field-based learning. I also write independent essays on soil carbon and agricultural
+          technology, and build data visualisations to make environmental evidence easier to read.
+        </p>
+        <p>
+          I am looking for project officer, coordinator and research support roles where careful
+          delivery matters.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sage" aria-labelledby="experience-title">
+    <div class="shell timeline-grid">
+      <div class="timeline-rail" data-reveal>
+        <h2 id="experience-title">Experience</h2>
+        <p class="meta">Selected roles, most recent first.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Sep – Oct 2026</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">SCADA 2026 Summer Course</h3>
+            <p class="meta">IPB University · Participant</p>
+            <p>
+              A two-month non-degree programme on advances in digital agriculture, covering
+              sustainable agriculture, soil health, remote sensing, resource management,
+              greenhouse-gas emissions and food security, with field-based learning.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">May 2023 – Jan 2026</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Project Officer and Application Support</h3>
+            <p class="meta">PT Besindo Medi Prima · Full-time</p>
+            <p>
+              Supported radiotherapy equipment and application projects across Indonesia. Coordinated
+              schedules, training and regulatory visits; managed purchase orders, delivery orders,
+              handover certificates, invoices and progress reports; and worked with hospital teams,
+              consultants, vendors and internal departments.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">May – Oct 2023</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Personal Assistant</h3>
+            <p class="meta">Data Tribe · Part-time</p>
+            <p>
+              Supported the CEO and team with schedules, activity timelines, deadline follow-ups,
+              stakeholder meetings, minutes and administrative documentation.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Sep 2021 – Mar 2022</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Project Management Officer, Internship</h3>
+            <p class="meta">Telkom Indonesia and Indonesia Telecommunication &amp; Digital Research Institute</p>
+            <p>
+              Contributed to the Fisheries Cyber Center project through work breakdown structures,
+              weekly progress reports, a cost framework, partnership development and public event
+              communication.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="education-title">
+    <div class="shell timeline-grid">
+      <div class="timeline-rail" data-reveal>
+        <h2 id="education-title">Education</h2>
+        <p class="meta">The formal training behind the work.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Aug 2018 – Jul 2022</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">BSc Physics</h3>
+            <p class="meta">Universitas Indonesia · GPA 3.43/4.00</p>
+            <p>
+              Physics with a medical physics specialisation. Laboratory assistant, 2020–2021. Final
+              thesis on a copper-doped calcium sulfate thermoluminescence dosimeter for low-dose
+              radiation measurement.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Jun – Aug 2022</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">WPP NextGen Leaders Programme</h3>
+            <p class="meta">Cohort 2022 · Apprenticeship</p>
+            <p>
+              A ten-week fully funded learning series covering art direction, client briefs,
+              copywriting, strategic planning and inclusive marketing.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sage" aria-labelledby="organisation-title">
+    <div class="shell timeline-grid">
+      <div class="timeline-rail" data-reveal>
+        <h2 id="organisation-title">Organisations</h2>
+        <p class="meta">
+          Student leadership alongside the physics degree — where the coordination, fundraising and
+          communication habits were built.
+        </p>
+        <a class="text-action" href="/design/">
+          See the posters from this work <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Jul 2019 – Mar 2020</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Executive Producer</h3>
+            <p class="meta">TEDxUniversitasIndonesia</p>
+            <p>
+              Worked with cross-functional teams to conceive and run an event built around
+              community-driven perspectives. Developed and presented sponsorship proposals to
+              corporate brands and banks to secure external financial and operational support.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Mar 2019 – Jan 2020</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Staff, Student Empowerment and Innovation Department</h3>
+            <p class="meta">Badan Eksekutif Mahasiswa Universitas Indonesia (BEM UI)</p>
+            <p>
+              Wrote three articles exploring different perspectives within the university community,
+              based on background research and interviews with the people involved.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Mar 2019 – Jan 2020</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">Staff, Human Resources Development</h3>
+            <p class="meta">
+              Himpunan Mahasiswa Departemen Fisika Universitas Indonesia (HMDF UI)
+            </p>
+            <p>
+              Supported staff development through the annual performance appraisal cycle, which
+              raised participation by 80%. Also produced the department's promotional posters and
+              event communications.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item" data-reveal>
+          <p class="timeline-date">Jul 2019 – Nov 2019</p>
+          <div class="timeline-body">
+            <h3 class="timeline-role">
+              Head of Public Relations, Publications, Design and Documentation
+            </h3>
+            <p class="meta">
+              Pengenalan Departemen Fisika Universitas Indonesia (PDF UI) · HPDD division
+            </p>
+            <p>
+              Led a team of six across event documentation, social media design, publication
+              materials and broadcast communication. Coordinated publication timelines and content
+              ideas, monitored engagement and prepared performance reports, reaching 267% of the
+              engagement target over three months.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ivory" aria-labelledby="skills-title">
+    <div class="shell timeline-grid">
+      <div class="timeline-rail" data-reveal>
+        <h2 id="skills-title">Skills and tools</h2>
+        <p class="meta">The working vocabulary I bring to a project team.</p>
+      </div>
+
+      <dl class="skills-list" data-reveal>
+        <div class="skill-row">
+          <dt>Project and programme</dt>
+          <dd>
+            Project planning, risk management, resource planning, stakeholder communication, capacity
+            building, project governance
+          </dd>
+        </div>
+        <div class="skill-row">
+          <dt>Communication</dt>
+          <dd>Content planning, publication coordination, presentation, engagement monitoring</dd>
+        </div>
+        <div class="skill-row">
+          <dt>Analysis</dt>
+          <dd>Data analysis, KPI tracking, problem analysis, WBS, logframe mapping, proposal architecture</dd>
+        </div>
+        <div class="skill-row">
+          <dt>Tools</dt>
+          <dd>Microsoft Office, Google Workspace, Tableau, AutoCAD, Canva</dd>
+        </div>
+        <div class="skill-row">
+          <dt>Languages</dt>
+          <dd>Indonesian (native), English (professional working proficiency)</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="about-work-title">
+    <div class="shell">
+      <div class="gallery-head" data-reveal>
+        <h2 id="about-work-title">A few frames from the work</h2>
+        <a class="text-action" href="/work/">
+          Browse the archive <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="about-strip">
+        {strip.map((entry) => (
+          <a
+            class="strip-link"
+            href={`/work/${entry.item.slug}/`}
+            aria-label={`View ${entry.item.title}`}
+            data-reveal
+          >
+            <WorkFrame image={entry.image} caption={entry.caption} tone="sage" frameHeight={190} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand />
+</BaseLayout>

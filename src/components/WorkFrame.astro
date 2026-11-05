@@ -1,0 +1,40 @@
+---
+import type { WorkImage } from '../data/work';
+
+interface Props {
+  image: WorkImage;
+  caption?: string;
+  tone?: 'sage' | 'ochre' | 'clay' | 'ivory';
+  frameHeight?: number;
+  className?: string;
+  eager?: boolean;
+}
+
+const {
+  image,
+  caption,
+  tone = 'sage',
+  frameHeight,
+  className = '',
+  eager = false,
+} = Astro.props;
+
+const style = [
+  frameHeight ? `--frame-h: ${frameHeight}px` : '',
+  `--frame-tone: var(--${tone})`,
+]
+  .filter(Boolean)
+  .join('; ');
+---
+
+<figure class:list={['work-frame', className]} style={style}>
+  <img
+    src={image.src}
+    alt={image.alt}
+    width={image.width}
+    height={image.height}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
