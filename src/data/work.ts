@@ -94,6 +94,38 @@ const scadaPathway: WorkImage = {
   height: 900,
 };
 
+const scadaFieldGreenhouse: WorkImage = {
+  src: '/work/scada/scada-field-greenhouse.webp',
+  alt: 'Course participants seen from behind inside a glasshouse, reading a banner for the Summer Course on Advances in Digital Agriculture while seedling trays line the brick floor.',
+  caption: 'Glasshouse session',
+  width: 960,
+  height: 1280,
+};
+
+const scadaFieldVerticalFarm: WorkImage = {
+  src: '/work/scada/scada-field-vertical-farm.webp',
+  alt: 'Three course participants standing in a vertical-farming room between racks of LED-lit channels and seedling trays.',
+  caption: 'Vertical-farming installation',
+  width: 960,
+  height: 1280,
+};
+
+const scadaFieldPongkor: WorkImage = {
+  src: '/work/scada/scada-field-pongkor.webp',
+  alt: 'Six participants in white hard hats, orange hi-vis vests and yellow rubber boots posed in front of the tunnel entrance signed Museum Tambang Pongkor.',
+  caption: 'Museum Tambang Pongkor',
+  width: 960,
+  height: 1280,
+};
+
+const scadaFieldGroup: WorkImage = {
+  src: '/work/scada/scada-field-group.webp',
+  alt: 'A close group selfie of course participants seated together, wearing programme caps and lanyards.',
+  caption: 'The course group',
+  width: 1280,
+  height: 960,
+};
+
 const soilCover: WorkImage = {
   src: '/work/soil-carbon/soil-carbon-cover.webp',
   alt: 'Typographic cover for the essay Controls on soil organic carbon stabilization.',
@@ -350,8 +382,17 @@ export const work: WorkItem[] = [
     visibility: 'public',
     featured: true,
     cover: scadaTitle,
-    images: [scadaTitle, scadaUrgency, scadaTechnology, scadaPathway],
-    runImages: [scadaUrgency, scadaTechnology, scadaPathway],
+    images: [
+      scadaTitle,
+      scadaUrgency,
+      scadaTechnology,
+      scadaPathway,
+      scadaFieldGroup,
+      scadaFieldGreenhouse,
+      scadaFieldVerticalFarm,
+      scadaFieldPongkor,
+    ],
+    runImages: [scadaUrgency, scadaTechnology, scadaFieldVerticalFarm, scadaPathway, scadaFieldPongkor],
     facts: [
       { label: 'Role', value: 'Analysis, slide design and presentation' },
       { label: 'Context', value: 'Academic · SCADA 2026 Summer Course, IPB University' },
@@ -379,6 +420,13 @@ export const work: WorkItem[] = [
         paragraphs: [
           'The recommendation is a five-year pathway. Year one is for understanding local soil, crops, climate risks, farmer priorities and buyers. Years two and three are for testing and adapting on demonstration plots, training local operators and tracking full-season costs. Years four and five are for scaling what works.',
           'Continuous monitoring combines remote data, field samples and farmer records. The closing line is deliberate: the goal is not to deliver more technology, but to leave farmers more capable of making good decisions without it.',
+        ],
+      },
+      {
+        heading: 'On site',
+        paragraphs: [
+          'The programme ran as a summer course on advances in digital agriculture, and its field component took participants inside operating production systems. The photographs record three of those visits: a glasshouse with seedling trays laid along the brick floor, a vertical-farming room lit by LED racks over planted channels, and the tunnel entrance of Museum Tambang Pongkor, where the group went in hard hats, hi-vis vests and rubber boots.',
+          'They are included as evidence of the field side of the work, because the deck argues from conditions on the ground rather than from technology alone. Fellow course participants appear in these photographs with their agreement.',
         ],
       },
       {
