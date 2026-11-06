@@ -126,6 +126,15 @@ const scadaFieldGroup: WorkImage = {
   height: 960,
 };
 
+const scadaClosing: WorkImage = {
+  src: '/work/scada/scada-field-closing.webp',
+  alt: 'Vania receiving the second-best participant prize at the close of the course: a member of staff hands her a blue IPB University gift bag in front of a wall signed Soil Science and Land Resource.',
+  caption: 'Second-best participant',
+  width: 1600,
+  height: 1066,
+  wide: true,
+};
+
 const soilCover: WorkImage = {
   src: '/work/soil-carbon/soil-carbon-cover.webp',
   alt: 'Typographic cover for the essay Controls on soil organic carbon stabilization.',
@@ -391,6 +400,7 @@ export const work: WorkItem[] = [
       scadaFieldGreenhouse,
       scadaFieldVerticalFarm,
       scadaFieldPongkor,
+      scadaClosing,
     ],
     runImages: [scadaUrgency, scadaTechnology, scadaFieldVerticalFarm, scadaPathway, scadaFieldPongkor],
     facts: [
@@ -398,6 +408,7 @@ export const work: WorkItem[] = [
       { label: 'Context', value: 'Academic · SCADA 2026 Summer Course, IPB University' },
       { label: 'Format', value: '10 slides · 10-minute talk' },
       { label: 'Evidence', value: 'National statistics and peer-reviewed studies' },
+      { label: 'Recognition', value: 'Second-best participant of the course' },
       { label: 'Language', value: 'English' },
     ],
     sections: [
@@ -427,6 +438,13 @@ export const work: WorkItem[] = [
         paragraphs: [
           'The programme ran as a summer course on advances in digital agriculture, and its field component took participants inside operating production systems. The photographs record three of those visits: a glasshouse with seedling trays laid along the brick floor, a vertical-farming room lit by LED racks over planted channels, and the tunnel entrance of Museum Tambang Pongkor, where the group went in hard hats, hi-vis vests and rubber boots.',
           'They are included as evidence of the field side of the work, because the deck argues from conditions on the ground rather than from technology alone. Fellow course participants appear in these photographs with their agreement.',
+        ],
+      },
+      {
+        heading: 'Recognition',
+        paragraphs: [
+          'The course closed with a participant award at the Department of Soil Science and Land Resource at IPB University, where I was named second-best participant.',
+          'The photograph records the handover. The prize is the university-branded gift bag rather than a certificate, so this image is the record of it.',
         ],
       },
       {
